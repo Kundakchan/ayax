@@ -1,3 +1,13 @@
 <template>
-  <div id="app"> </div>
+ <v-app></v-app>
 </template>
+
+<script>
+
+export default {
+  name: 'App',
+  data () {
+    return {}
+  }
+}
+</script>
