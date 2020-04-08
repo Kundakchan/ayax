@@ -24,15 +24,33 @@
       <v-icon slot="append">mdi-magnify</v-icon>
     </v-text-field>
     <v-spacer class="d-none d-md-block"></v-spacer>
-    <v-btn class="ma-2 d-none d-sm-block" outlined>Новый риэлтор</v-btn>
-    <v-btn class="ma-2 d-none d-sm-block" outlined>Список риэлторов</v-btn>
+    <v-btn
+      v-for="(item, index) in links"
+      :key="index"
+      class="ma-2 d-none d-sm-flex"
+      outlined
+      :to="item.path"
+      tag="router-link">
+      {{ item.name }}
+    </v-btn>
   </v-app-bar>
 </template>
 
 <script>
 export default {
   data () {
-    return {}
+    return {
+      links: [
+        {
+          path: '/create',
+          name: 'Новый риэлтор'
+        },
+        {
+          path: '/',
+          name: 'Список риэлторов'
+        }
+      ]
+    }
   },
   methods: {
     drawer () {

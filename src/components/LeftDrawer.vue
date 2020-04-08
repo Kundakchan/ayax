@@ -5,7 +5,12 @@
     app
     temporary>
     <v-list dense nav>
-      <v-list-item v-for="item in items" :key="item.title" link>
+      <v-list-item
+        v-for="(item, index) in links"
+        :key="index"
+        link
+        :to="item.path"
+        tag="router-link">
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -25,9 +30,17 @@ export default {
   data () {
     return {
       open: false,
-      items: [
-        { title: 'Новый риэлтор', icon: 'mdi-account-multiple-plus' },
-        { title: 'Список риэлторов', icon: 'mdi-format-list-bulleted-square' }
+      links: [
+        {
+          path: '/create',
+          title: 'Новый риэлтор',
+          icon: 'mdi-account-multiple-plus'
+        },
+        {
+          path: '/',
+          title: 'Список риэлторов',
+          icon: 'mdi-format-list-bulleted-square'
+        }
       ]
     }
   },
