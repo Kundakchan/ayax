@@ -15,14 +15,7 @@
       </v-img>
     </template>
     <v-app-bar-nav-icon class="d-sm-none" @click="drawer"></v-app-bar-nav-icon>
-    <v-text-field
-      class="mt-1"
-      dense
-      filled
-      rounded
-      placeholder="Поиск">
-      <v-icon slot="append">mdi-magnify</v-icon>
-    </v-text-field>
+    <search @value="search($event)"></search>
     <v-spacer class="d-none d-md-block"></v-spacer>
     <v-btn
       v-for="(item, index) in links"
@@ -37,7 +30,11 @@
 </template>
 
 <script>
+import Search from '@/components/Search'
 export default {
+  components: {
+    Search
+  },
   data () {
     return {
       links: [
@@ -55,6 +52,10 @@ export default {
   methods: {
     drawer () {
       this.$emit('drawer', true)
+    },
+    search (event) {
+      if (!event) this.$router.push('/')
+      else this.$router.push(`/${event}`)
     }
   }
 }
